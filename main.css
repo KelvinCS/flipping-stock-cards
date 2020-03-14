@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin:400,500,700&display=swap');
+
+:root {
+    --flip-animation-duration: 6s;
+    --progress-animation-duration: 2s;
+    --border-color: #bdbdbd;
+    --dark: #212121;
+    --light-green: #00c853;
+}
+
+body {
+    background-color: #212121;
+    font-family: Cabin, sans-serif;
+    color: var(--dark);
+}
+
+@keyframes flip {
+    0% {
+        transform: translateX(30px);
+        z-index: 0;
+        opacity: 0.1;
+    }
+
+    5.25% {
+        transform: translate(0, 0);
+        z-index: 0;
+        opacity: 1;
+    }
+
+    25% {
+        transform: translate(0, 0);
+        z-index: 0;
+        opacity: 1;
+    }
+
+    33.333333333333336% {
+        transform: translate(-10px, -10px);
+        z-index: 1;
+        opacity: 1;
+    }
+
+    58.333333333333336% {
+        transform: translate(-10px, -10px);
+        z-index: 1;
+        opacity: 1;
+
+    }
+
+    66.66666666666667% {
+        transform: translate(-20px, -20px);
+        z-index: 2;
+        opacity: 1;
+    }
+
+    91.66666666666667% {
+        transform: translate(-20px, -20px);
+        z-index: 2;
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-250px, -20px);
+        z-index: 2;
+        opacity: 0.1;
+    }
+}
+
+
+.stock-card {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    animation: flip var(--flip-animation-duration) ease-in-out infinite;
+    
+}
+
+.stock-card--b3 {
+    animation-delay: -4s;
+}
+
+.stock-card--ptr4 {
+    animation-delay: -2s;
+}
+
+.text-light-green {
+    color: var(--light-green);
+}
+
+.progress__container {
+    height: 2px;
+    background-color: #bdbdbd;
+    position: relative;
+    width: 100%;
+}
+
+.progress__container::before {
+    content: "";
+    position: absolute;
+    left: calc(50% - 4px);
+    top: calc(50% - 4px);
+    height: 8px;
+    width: 8px;
+    background-color: var(--light-green);
+}
+
+.progress__bar {
+    margin-left: 50%;
+    height: 2px;
+    width: 50%;
+    background-color: var(--light-green);
+    position: relative;
+}
+
+.progress__bar::after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: calc(50% - 4px);
+    height: 8px;
+    width: 8px;
+    background-color: transparent;
+    border: 2px solid var(--light-green);
+    border-radius: 100px;
+}
+
+
+
+@keyframes progress--b3 {
+    0% {
+        width: 10%;
+    }
+
+    50% {
+        width: 15%;
+    }
+
+    100% {
+        width: 13%;
+    }
+}
+
+@keyframes floating-price--b3 {
+    0% {
+        content: "+ R$ 281,25"
+    }
+
+    50% {
+        content: "+ R$ 285,85";
+    }
+
+    100% {
+        content: "+ R$ 284,00";
+    }
+}
+
+.stock-card--b3 .stock-price::after {
+    content:  "+ R$ 281,25";
+    animation: floating-price--b3 var(--progress-animation-duration) infinite;
+}
+
+.stock-card--b3 .progress__bar {
+    animation: progress--b3 var(--progress-animation-duration) infinite
+}
+
+
+@keyframes progress--ptr4 {
+    0% {
+        width: 35%;
+    }
+
+    50% {
+        width: 40%;
+    }
+
+    100% {
+        width: 37%;
+    }
+}
+
+@keyframes floating-price--ptr4 {
+    0% {
+        content: "+ R$ 133,25"
+    }
+
+    50% {
+        content: "+ R$ 137,85";
+    }
+
+    100% {
+        content: "+ R$ 135,00";
+    }
+}
+
+.stock-card--ptr4 .stock-price::after {
+    content:  "+ R$ 133,25";
+    animation: floating-price--ptr4 var(--progress-animation-duration) infinite;
+}
+
+.stock-card--ptr4 .progress__bar {
+    animation: progress--ptr4 var(--progress-animation-duration) infinite
+}
+
+
+@keyframes progress--mglu {
+    0% {
+        width: 25%;
+    }
+
+    50% {
+        width: 28%;
+    }
+
+    100% {
+        width: 26%;
+    }
+}
+
+@keyframes floating-price--mglu {
+    0% {
+        content: "+ R$ 609,25"
+    }
+
+    50% {
+        content: "+ R$ 612,85";
+    }
+
+    100% {
+        content: "+ R$ 611,00";
+    }
+}
+
+.stock-card--mglu .stock-price::after {
+    content:  "+ R$ 609,25";
+    animation: floating-price--mglu var(--progress-animation-duration) infinite;
+}
+
+.stock-card--mglu .progress__bar {
+    animation: progress--mglu var(--progress-animation-duration) infinite
+}
